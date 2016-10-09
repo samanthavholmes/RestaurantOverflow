@@ -2,11 +2,11 @@ require 'rails_helper'
 
 RSpec.describe Question, type: :model do
   before(:each) do
-    @user = User.create(first_name: "Dasiy", last_name: "Parker", email: "daisyp@gmai.com", password: "password")
+    @user = User.create(first_name: "Daisy", last_name: "Parker", email: "daisyp@gmai.com", password: "password")
     @question = Question.create(title: "question title", body: "question body", user: @user)
     @answer = Answer.create(body: "answer body", user: @user, question_id: @question.id)
     @comment = Comment.create(body: "comment body", user: @user, commentable_type: "Question", commentable_id: @question.id)
-    @vote = Vote.create(value: 1, user: @user)
+    @vote = Vote.create(value: 1, user: @user, voteable_type: "Question", voteable_id: @question.id)
   end
 
   it "is valid with valid attributes" do
@@ -24,7 +24,7 @@ RSpec.describe Question, type: :model do
   end
 
   it 'has an associated user' do
-    expect(@question.user).to eq [@user]
+    expect(@question.user).to eq @user
   end
 
   it 'has associated answers' do
