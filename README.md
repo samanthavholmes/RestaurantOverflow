@@ -1,3 +1,3 @@
-# MovieOverflow
-A stack overflow clone for movies. React/Rails
+# RestaurantOverflow
+A stack overflow clone for restaurants. React/Rails
 
